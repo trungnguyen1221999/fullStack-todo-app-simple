@@ -8,31 +8,31 @@ import api from "@/lib/axios";
 import { toast } from "sonner";
 
 const TaskCard = ({ task, index, handleTaskChanged }) => {
-  const [isEditting, setIsEditting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [updateTaskTitle, setUpdateTaskTitle] = useState(task.title || "");
 
   const deleteTask = async (taskId) => {
     try {
       await api.delete(`/tasks/${taskId}`);
-      toast.success("Nhiệm vụ đã xoá.");
+      toast.success("Task deleted.");
       handleTaskChanged();
     } catch (error) {
-      console.error("Lỗi xảy ra khi xoá task.", error);
-      toast.error("Lỗi xảy ra khi xoá nhiệm vụ mới.");
+      console.error("Error deleting task.", error);
+      toast.error("Error occurred while deleting the task.");
     }
   };
 
   const updateTask = async () => {
     try {
-      setIsEditting(false);
+      setIsEditing(false);
       await api.put(`/tasks/${task._id}`, {
         title: updateTaskTitle,
       });
-      toast.success(`Nhiệm vụ đã đổi thành ${updateTaskTitle}`);
+      toast.success(`Task updated to "${updateTaskTitle}".`);
       handleTaskChanged();
     } catch (error) {
-      console.error("Lỗi xảy ra khi update task.", error);
-      toast.error("Lỗi xảy ra khi cập nhập nhiệm vụ.");
+      console.error("Error updating task.", error);
+      toast.error("Error occurred while updating the task.");
     }
   };
 
@@ -43,20 +43,18 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
           status: "complete",
           completedAt: new Date().toISOString(),
         });
-
-        toast.success(`${task.title} đã hoàn thành.`);
+        toast.success(`"${task.title}" is completed.`);
       } else {
         await api.put(`/tasks/${task._id}`, {
           status: "active",
           completedAt: null,
         });
-        toast.success(`${task.title} đã đổi sang chưa hoàn thành.`);
+        toast.success(`"${task.title}" marked as not completed.`);
       }
-
       handleTaskChanged();
     } catch (error) {
-      console.error("Lỗi xảy ra khi update task.", error);
-      toast.error("Lỗi xảy ra khi cập nhập nhiệm vụ.");
+      console.error("Error updating task.", error);
+      toast.error("Error occurred while updating the task.");
     }
   };
 
@@ -75,7 +73,7 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
       style={{ animationDelay: `${index * 50}ms` }}
     >
       <div className="flex items-center gap-4">
-        {/* nút tròn */}
+        {/* Circle button */}
         <Button
           variant="ghost"
           size="icon"
@@ -94,18 +92,18 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
           )}
         </Button>
 
-        {/* hiển thị hoặc chỉnh sửa tiêu đề */}
+        {/* Display or edit title */}
         <div className="flex-1 min-w-0">
-          {isEditting ? (
+          {isEditing ? (
             <Input
-              placeholder="Cần phải làm gì?"
+              placeholder="What needs to be done?"
               className="flex-1 h-12 text-base border-border/50 focus:border-primary/50 focus:ring-primary/20"
               type="text"
               value={updateTaskTitle}
               onChange={(e) => setUpdateTaskTitle(e.target.value)}
               onKeyPress={handleKeyPress}
               onBlur={() => {
-                setIsEditting(false);
+                setIsEditing(false);
                 setUpdateTaskTitle(task.title || "");
               }}
             />
@@ -122,7 +120,7 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
             </p>
           )}
 
-          {/* ngày tạo & ngày hoàn thành */}
+          {/* Created & completed date */}
           <div className="flex items-center gap-2 mt-1">
             <Calendar className="size-3 text-muted-foreground" />
             <span className="text-xs text-muted-foreground">
@@ -140,22 +138,22 @@ const TaskCard = ({ task, index, handleTaskChanged }) => {
           </div>
         </div>
 
-        {/* nút chỉnh và xoá */}
+        {/* Edit & Delete buttons */}
         <div className="hidden gap-2 group-hover:inline-flex animate-slide-up">
-          {/* nút edit */}
+          {/* Edit button */}
           <Button
             variant="ghost"
             size="icon"
             className="flex-shrink-0 transition-colors size-8 text-muted-foreground hover:text-info"
             onClick={() => {
-              setIsEditting(true);
+              setIsEditing(true);
               setUpdateTaskTitle(task.title || "");
             }}
           >
             <SquarePen className="size-4" />
           </Button>
 
-          {/* nút xoá */}
+          {/* Delete button */}
           <Button
             variant="ghost"
             size="icon"

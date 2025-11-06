@@ -8,7 +8,7 @@ export const Header = () => {
       </h1>
 
       <p className="text-muted-foreground">
-        Không có việc gì khó, chỉ sợ mình không làm 💪
+        Nothing is too hard, just afraid you won’t do it 💪
       </p>
     </div>
   );

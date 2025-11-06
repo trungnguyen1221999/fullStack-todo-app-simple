@@ -2,6 +2,10 @@
 
 A simple and modern fullstack Todo application built with **React**, **Express**, **MongoDB**, and **Vite**.
 
+<p align="center">
+  <img src="blob:https://imgur.com/fd906685-7ff3-430c-a4bc-1d65fceb67b6" alt="" width="1000"/>
+</p>
+
 ## Live Preview
 
 Check it out live: [https://fullstack-todo-app-simple.onrender.com/](https://fullstack-todo-app-simple.onrender.com/)

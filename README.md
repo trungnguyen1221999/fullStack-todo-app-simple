@@ -1,31 +1,24 @@
-# 📝 Task Management App
+# TodoX - Fullstack Todo App
 
-A clean and modern **Fullstack MERN** (MongoDB, Express, React, Node.js) application that helps you create, track, and manage daily tasks easily and efficiently.
+A simple and modern fullstack Todo application built with **React**, **Express**, **MongoDB**, and **Vite**.
 
----
+## Live Preview
 
-## 🚀 Features
+Check it out live: [https://fullstack-todo-app-simple.onrender.com/](https://fullstack-todo-app-simple.onrender.com/)
 
-- ✅ Create, update, and delete tasks  
-- 📅 Filter tasks by **Today**, **This Week**, **This Month**, or **All**  
-- 📊 View task statistics (active and completed counts)  
-- ⏭️ Pagination support for task lists  
-- 🌈 Responsive modern UI built with **React + TailwindCSS**  
-- ⚙️ Backend powered by **Node.js, Express, and MongoDB**
+## Features
 
----
+- Add, edit, and delete tasks
+- Mark tasks as completed
+- Filter tasks by status: Active, Completed, All
+- Filter tasks by time: Today, This Week, This Month, All
+- Pagination for task lists
+- Responsive and modern UI design
+- Notifications for task actions
 
-## 🧩 Tech Stack
+## Tech Stack
 
-### **Frontend**
-- React (Vite)
-- TailwindCSS
-- Axios
-- Sonner (toast notifications)
-
-### **Backend**
-- Node.js
-- Express.js
-- Mongoose (MongoDB ODM)
-- dotenv
-- cors
+- Frontend: React, Vite, TailwindCSS
+- Backend: Express, MongoDB, Mongoose
+- Axios for API requests
+- Sonner for toast notifications
